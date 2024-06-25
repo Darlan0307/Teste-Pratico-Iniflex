@@ -2,7 +2,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Iterator;
 import java.util.Date;
 
 public class Main {
@@ -22,14 +21,8 @@ public class Main {
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), 2799.93, "Gerente"));
 
         // 3.2 – Remover o funcionário “João” da lista.
-        Iterator < Funcionario > iterator = funcionarios.iterator();
-        while (iterator.hasNext()) {
-            Funcionario funcionario = iterator.next();
-            if (funcionario.getNome().contains("João")) {
-                iterator.remove();
-                System.out.println("Joao removido com sucesso!");
-            }
-        }
+        funcionarios.removeIf(funcionario -> funcionario.getNome().contains("João"));
+        System.out.println("Todos os funcionários com nome 'João' foram removidos.");
 
         // 3.3 – Imprimir todos os funcionários com todas suas informações, sendo que:
         // informação de data deve ser exibido no formato dd/mm/aaaa;
